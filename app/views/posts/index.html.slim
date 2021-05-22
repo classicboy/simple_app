@@ -1,0 +1,79 @@
+body
+  nav#mainNav.navbar.navbar-expand-lg.navbar-light
+    .container.px-4.px-lg-5
+      a.navbar-brand href=""  Start Bootstrap
+      button.navbar-toggler aria-controls="navbarResponsive" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarResponsive" data-bs-toggle="collapse" type="button"
+        | Menu
+        i.fas.fa-bars
+      #navbarResponsive.collapse.navbar-collapse
+        ul.navbar-nav.ms-auto.py-4.py-lg-0
+          li.nav-item
+            = link_to 'Home', root_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
+          - if user_signed_in?
+            li.nav-item
+              a.nav-link.px-lg-3.py-3.py-lg-4 href=""  My Posts
+          li.nav-item
+            - if user_signed_in?
+              = link_to 'Log out', destroy_user_session_path, class: 'nav-link px-lg-3 py-3 py-lg-4', data: { confirm: 'Are you sure ?' }, method: :delete
+            - else
+              = link_to 'Log in', new_user_session_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
+  /! Page Header
+  header.masthead style=("background-image: url(#{asset_path 'home-bg.jpg'})")
+    .container.position-relative.px-4.px-lg-5
+      .row.gx-4.gx-lg-5.justify-content-center
+        .col-md-10.col-lg-8.col-xl-7
+          .site-heading
+            h1 = current_user.name
+            span.subheading = current_user.email
+  /! Main Content
+  .container.px-4.px-lg-5
+    .row.gx-4.gx-lg-5.justify-content-center
+      .col-md-10.col-lg-8.col-xl-7
+        /! Post preview
+        .post-preview
+          a href="post.html"
+            h2.post-title Man must explore, and this is exploration at its greatest
+            h3.post-subtitle Problems look mighty small from 150 miles up
+          p.post-meta
+            | Posted by
+            a href="#!"  Start Bootstrap
+            | on September 24, 2021
+        /! Divider
+        hr.my-4/
+        /! Post preview
+        .post-preview
+          a href="post.html"
+            h2.post-title Man must explore, and this is exploration at its greatest
+            h3.post-subtitle Problems look mighty small from 150 miles up
+          p.post-meta
+            | Posted by
+            a href="#!"  Start Bootstrap
+            | on September 24, 2021
+        /! Divider
+        hr.my-4/
+        /! Pager
+        .d-flex.justify-content-end.mb-4
+          a.btn.btn-primary.text-uppercase href="#!"  Older Posts →
+  /! Footer
+  footer.border-top
+    .container.px-4.px-lg-5
+      .row.gx-4.gx-lg-5.justify-content-center
+        .col-md-10.col-lg-8.col-xl-7
+          ul.list-inline.text-center
+            li.list-inline-item
+              a href="#!"
+                span.fa-stack.fa-lg
+                  i.fas.fa-circle.fa-stack-2x
+                  i.fab.fa-twitter.fa-stack-1x.fa-inverse
+            li.list-inline-item
+              a href="#!"
+                span.fa-stack.fa-lg
+                  i.fas.fa-circle.fa-stack-2x
+                  i.fab.fa-facebook-f.fa-stack-1x.fa-inverse
+            li.list-inline-item
+              a href="#!"
+                span.fa-stack.fa-lg
+                  i.fas.fa-circle.fa-stack-2x
+                  i.fab.fa-github.fa-stack-1x.fa-inverse
+          .small.text-center.text-muted.fst-italic Copyright © Your Website 2021
+
