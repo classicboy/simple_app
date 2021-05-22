@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 gem 'devise'
 gem 'jquery-rails'
+gem 'kaminari'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3'
 gem 'slim-rails'

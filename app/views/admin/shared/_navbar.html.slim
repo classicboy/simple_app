@@ -1,0 +1,19 @@
+nav.sb-topnav.navbar.navbar-expand.navbar-dark.bg-dark
+  /! Navbar Brand
+  a.navbar-brand.ps-3 href="index.html"  Start Bootstrap
+  /! Sidebar Toggle
+  button#sidebarToggle.btn.btn-link.btn-sm.order-1.order-lg-0.me-4.me-lg-0 href="#!"
+    i.fas.fa-bars
+  .d-none.d-md-inline-block.form-inline.ms-auto.me-0.me-md-3.my-2.my-md-0
+  /! Navbar
+  ul.navbar-nav.ms-auto.ms-md-0.me-3.me-lg-4
+    li.nav-item.dropdown
+      a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button"
+        i.fas.fa-user.fa-fw
+      ul.dropdown-menu.dropdown-menu-end aria-labelledby="navbarDropdown"
+        li
+          a.dropdown-item href="#!" Profile
+        li
+          hr.dropdown-divider/
+        li
+          = link_to 'Logout', destroy_user_session_path, class: 'dropdown-item', data: { confirm: 'Are you sure ?' }, method: :delete

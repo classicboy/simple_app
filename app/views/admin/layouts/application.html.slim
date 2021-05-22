@@ -12,4 +12,14 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'admin/application', media: 'all'
     = javascript_include_tag 'admin/application'
-  = yield
+    - if content_for? :stylesheet
+      = yield :stylesheet
+  body.sb-nav-fixed
+    = render 'admin/shared/navbar'
+    #layoutSidenav
+      = render 'admin/shared/sidebar'
+      #layoutSidenav_content
+        main
+          .container-fluid.px-4
+            = yield
+        = render 'admin/shared/footer'

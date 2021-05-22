@@ -17,9 +17,9 @@ body
               = link_to 'My Posts', posts_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
           li.nav-item
             - if user_signed_in?
-              = link_to 'Log out', destroy_user_session_path, class: 'nav-link px-lg-3 py-3 py-lg-4', data: { confirm: 'Are you sure ?' }, method: :delete
+              = link_to 'Logout', destroy_user_session_path, class: 'nav-link px-lg-3 py-3 py-lg-4', data: { confirm: 'Are you sure ?' }, method: :delete
             - else
-              = link_to 'Log in', new_user_session_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
+              = link_to 'Login', new_user_session_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
   /! Page Header
   header.masthead style=("background-image: url(#{asset_path 'home-bg.jpg'})")
     .container.position-relative.px-4.px-lg-5

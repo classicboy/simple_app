@@ -1,0 +1,15 @@
+.form-floating {
+  .field_with_errors {
+    .form-control {
+      height: calc(3.5rem + 2px);
+      padding: 1rem 0.75rem;
+      padding-top: 1.625rem;
+      padding-bottom: 0.625rem;
+    }
+  }
+  .field_with_errors ~ label {
+    color: red;
+    opacity: 0.65;
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+  }
+}

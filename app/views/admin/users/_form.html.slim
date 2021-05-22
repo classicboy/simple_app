@@ -1,0 +1,19 @@
+.row
+  .col-xl-12
+    .card
+      .card-body
+        = form_with model: [:admin, user], local: true do |f|
+          .card-body
+            .form-floating.mb-3
+              = f.text_field :name, class: 'form-control', id: 'inputName', autocomplete: 'off', required: true
+              label for='inputName' User Name #{user.errors[:name].join('and')}
+            .form-floating.mb-3
+              = f.email_field :email, class: 'form-control', autocomplete: 'off', id: 'inputEmail', required: true
+              label for='inputEmail' Email address #{user.errors[:email].join('and')}
+            .form-floating.mb-3
+              = f.password_field :password, class: 'form-control', id: 'inputPassword'
+              label for='inputPassword' Password #{user.errors[:password].join('and')}
+            => f.submit 'Submit', class: 'btn btn-primary'
+            = link_to 'Back', admin_users_path, class: 'btn btn-secondary'
+- content_for(:stylesheet) do
+  = stylesheet_link_tag 'admin/users/form', media: 'all'

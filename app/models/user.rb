@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   after_create :assign_default_role
 
+  scope :id_desc, -> { order id: :desc }
+  scope :regular_users, -> { with_role :regular_user }
+
   def assign_default_role
     self.add_role(:regular_user) if roles.blank?
   end
