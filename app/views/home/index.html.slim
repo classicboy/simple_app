@@ -7,11 +7,14 @@ body
         i.fas.fa-bars
       #navbarResponsive.collapse.navbar-collapse
         ul.navbar-nav.ms-auto.py-4.py-lg-0
+          - if user_signed_in? && current_user.admin?
+            li.nav-item
+              = link_to 'Admin Page', admin_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
           li.nav-item
             = link_to 'Home', root_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
           - if user_signed_in?
             li.nav-item
-              a.nav-link.px-lg-3.py-3.py-lg-4 href=""  My Posts
+              = link_to 'My Posts', posts_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
           li.nav-item
             - if user_signed_in?
               = link_to 'Log out', destroy_user_session_path, class: 'nav-link px-lg-3 py-3 py-lg-4', data: { confirm: 'Are you sure ?' }, method: :delete

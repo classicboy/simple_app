@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
+  resources :posts
+
   namespace :admin do
     get '/', to: 'application#index'
   end
