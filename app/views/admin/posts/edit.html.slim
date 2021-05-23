@@ -1,0 +1,6 @@
+h1.mt-4 EDIT POST
+ol.breadcrumb.mb-4
+  li.breadcrumb-item = link_to 'Admin Page', admin_path
+  li.breadcrumb-item = link_to 'List Of Posts', admin_posts_path
+  li.breadcrumb-item.active Edit Post
+= render 'form', post: @post

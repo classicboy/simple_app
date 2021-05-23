@@ -11,4 +11,8 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
-  = yield
+    = yield :header
+  body
+    = render 'shared/navbar'
+    = yield
+    = render 'shared/footer'

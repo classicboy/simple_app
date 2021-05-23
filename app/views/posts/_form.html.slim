@@ -1,0 +1,27 @@
+- content_for(:header) do
+  = stylesheet_link_tag 'shared/posts/form'
+  = javascript_include_tag Ckeditor.cdn_url
+  = javascript_include_tag 'shared/posts/form'
+
+= form_with model: post, local: true do |f|
+  .form-floating
+    = f.text_field :title, class: 'form-control', id: 'inputTitle', placeholder: 'Title', autocomplete: 'off', required: true
+    label for='inputTitle' Title #{post.errors[:title].join('and')}
+  .form-floating
+    = f.text_field :description, class: 'form-control', placeholder: 'Description', autocomplete: 'off', id: 'inputDescription'
+    label for='inputDescription' Description #{post.errors[:description].join('and')}
+  .form-floating.d-flex.flex-column-reverse
+    - if post.header_image.present?
+      = image_tag post.header_image.thumb.url, class: 'mb-1', id: 'previewImage'
+    - else
+      img.mb-1#previewImage src="#{asset_path 'default-image.jpg'}"
+    = f.file_field :header_image, class: 'form-control pt-1', id: 'inputHeaderImage'
+    label.position-static for='inputHeaderImage' Header Image #{post.errors[:header_image].join('and')}
+  .form-floating.d-flex.flex-column-reverse
+    = f.cktext_area :content, class: 'form-control', placeholder: 'Content', autocomplete: 'off', id: 'inputContent', required: true
+    label.position-static for='inputContent' Content #{post.errors[:content].join('and')}
+  .form-check.my-3
+    = f.check_box :published, class: 'form-check-input', id: 'checkPublished'
+    label.form-check-label for="checkPublished"  Published Now
+  => f.submit 'Submit', class: 'btn btn-primary'
+  = link_to 'Back', posts_path, class: 'btn btn-secondary'

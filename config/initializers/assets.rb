@@ -13,4 +13,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w(
   admin/users/form.css
+  admin/posts/form.css
+  shared/posts/form.css
+  shared/posts/form.js
+  ckeditor/*
 )

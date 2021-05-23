@@ -34,3 +34,4 @@ en:
   time:
     formats:
       default: '%Y/%m/%d %H:%M:%S'
+      without_time: '%B %d, %Y'

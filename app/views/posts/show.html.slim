@@ -1,0 +1,22 @@
+header.masthead style=("background-image: url(#{asset_path(@post.header_image.present? ? @post.header_image.url : 'home-bg.jpg')})")
+  .container.position-relative.px-4.px-lg-5
+    .row.gx-4.gx-lg-5.justify-content-center
+      .col-md-10.col-lg-8.col-xl-7
+        .post-heading
+          h1 = @post.title
+          h2.subheading = @post.description
+          span.meta
+            | Posted by 
+            a href="#!" = @post.user_name
+            - if @post.published_at.present?
+              = " on #{l @post.published_at, format: :without_time}"
+article.mb-4
+  .container.px-4.px-lg-5
+    .row.gx-4.gx-lg-5.justify-content-center
+      .col-md-10.col-lg-8.col-xl-7.overflow-auto
+        - if policy(@post).publish?
+          .d-flex.justify-content-between.mb-4
+            => link_to 'Edit Post', edit_post_path(@post), class: 'btn btn-warning text-uppercase'
+            = link_to 'Publish This Post', publish_post_path(@post), class: 'btn btn-success text-uppercase', method: :post unless @post.published
+          hr.my-4/
+        = @post.content.html_safe

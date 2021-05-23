@@ -1,4 +1,5 @@
 class Admin::ApplicationController < ActionController::Base
+  include Pundit
   before_action :authenticate_user!
 
   layout 'admin/layouts/application'

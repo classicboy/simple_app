@@ -12,4 +12,20 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'admin/application', media: 'all'
     = javascript_include_tag 'admin/application'
-  = yield
+    = yield :header
+  body.bg-primary
+    #layoutAuthentication
+      #layoutAuthentication_content
+        main
+          .container
+            .row.justify-content-center
+              = yield
+      #layoutAuthentication_footer
+        footer.py-4.bg-light.mt-auto
+          .container-fluid.px-4
+            .d-flex.align-items-center.justify-content-between.small
+              .text-muted Copyright © Your Website 2021
+              div
+                a href="#"  Privacy Policy
+                | ·
+                a href="#"  Terms &amp; Conditions

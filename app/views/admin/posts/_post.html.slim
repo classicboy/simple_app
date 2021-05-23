@@ -1,0 +1,11 @@
+tr
+  td = post.id
+  td = post.user_name
+  td = post.user_email
+  td = post.title
+  td = post.description
+  td = l post.published_at, format: :default if post.published
+  td
+    => link_to 'Show', post_path(post), class: 'btn btn-primary'
+    => link_to 'Edit', edit_admin_post_path(post), class: 'btn btn-warning'
+    = link_to 'Destroy', admin_post_path(post), class: 'btn btn-danger', data: { confirm: 'Are you ?' }, method: :delete

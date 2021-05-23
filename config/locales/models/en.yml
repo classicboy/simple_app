@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      post: Post
+    attributes:
+      header_image: header_image
+    errors:
+      models:
+        post:
+          attributes:
+            header_image:
+              minimum_size: should be 1600x900px minimum!

@@ -1,0 +1,21 @@
+nav#mainNav.navbar.navbar-expand-lg.navbar-light
+  .container.px-4.px-lg-5
+    a.navbar-brand href=""  Start Bootstrap
+    button.navbar-toggler aria-controls="navbarResponsive" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarResponsive" data-bs-toggle="collapse" type="button"
+      | Menu
+      i.fas.fa-bars
+    #navbarResponsive.collapse.navbar-collapse
+      ul.navbar-nav.ms-auto.py-4.py-lg-0
+        - if user_signed_in? && current_user.admin?
+          li.nav-item
+            = link_to 'Admin Page', admin_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
+        li.nav-item
+          = link_to 'Home', root_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
+        - if user_signed_in?
+          li.nav-item
+            = link_to 'My Posts', posts_path, class: 'nav-link px-lg-3 py-3 py-lg-4'
+        li.nav-item
+          - if user_signed_in?
+            = link_to 'Logout', destroy_user_session_path, class: 'nav-link px-lg-3 py-3 py-lg-4', data: { confirm: 'Are you sure ?' }, method: :delete
+          - else
+            = link_to 'Login', new_user_session_path, class: 'nav-link px-lg-3 py-3 py-lg-4'

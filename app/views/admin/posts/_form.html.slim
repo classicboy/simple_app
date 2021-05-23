@@ -1,0 +1,29 @@
+- content_for(:header) do
+  = stylesheet_link_tag 'admin/posts/form', media: 'all'
+  = javascript_include_tag Ckeditor.cdn_url
+  = javascript_include_tag 'shared/posts/form'
+
+.row
+  .col-xl-12
+    .card
+      .card-body
+        = form_with model: [:admin, post], local: true do |f|
+          .card-body
+            .form-floating.mb-3
+              = f.text_field :title, class: 'form-control', placeholder: 'Title', id: 'inputTitle', autocomplete: 'off', required: true
+              label for='inputTitle' Title #{post.errors[:title].join('and')}
+            .form-floating.mb-3
+              = f.text_field :description, class: 'form-control', placeholder: 'Description', autocomplete: 'off', id: 'inputDescription'
+              label for='inputDescription' Description #{post.errors[:description].join('and')}
+            .form-floating.d-flex.flex-column-reverse.mb-3
+              - if post.header_image.present?
+                = image_tag post.header_image.thumb.url, class: 'mb-1', id: 'previewImage'
+              - else
+                img.mb-1#previewImage src="#{asset_path 'default-image.jpg'}"
+              = f.file_field :header_image, class: 'form-control pt-1', id: 'inputHeaderImage'
+              label.position-static for='inputHeaderImage' Header Image #{post.errors[:header_image].join('and')}
+            .form-floating.d-flex.flex-column-reverse.mb-3
+              = f.cktext_area :content, class: 'form-control', placeholder: 'Content', autocomplete: 'off', id: 'inputContent', required: true
+              label.position-static for='inputContent' Content #{post.errors[:content].join('and')}
+            => f.submit 'Submit', class: 'btn btn-primary'
+            = link_to 'Back', admin_posts_path, class: 'btn btn-secondary'

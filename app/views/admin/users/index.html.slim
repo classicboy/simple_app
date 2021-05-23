@@ -9,16 +9,16 @@ ol.breadcrumb.mb-4
         .float-end
           = link_to 'New User', new_admin_user_path, class: 'btn btn-primary'
       .card-body
-        = pagination @users
+        = pagination @users, 'bootstrap4'
         .table-responsive
           table.table.table-bordered.table-striped.text-nowrap
             thead
               tr
-                th = t('.id')
-                th = t('.name')
-                th = t('.email')
-                th = t('.created_at')
-                th = t('.action')
+                th Id
+                th Name
+                th Email
+                th Created at
+                th Action
             tbody
               = render @users
-        = pagination @users
+        = pagination @users, 'bootstrap4'

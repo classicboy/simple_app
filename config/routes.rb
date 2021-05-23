@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   root to: 'home#index'
 
   devise_for :users, path:'', controllers: {
@@ -7,7 +8,11 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  resources :posts
+  resources :posts do
+    member do
+      post :publish
+    end
+  end
 
   namespace :admin do
     get '/', to: 'application#index'

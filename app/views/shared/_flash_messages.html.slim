@@ -1,0 +1,4 @@
+.flash-message
+  - flash.each do |message_type, message|
+    ul class=('mb-3')
+      li class=("#{message_type == 'alert' ? 'text-danger' : 'text-success'}") = message

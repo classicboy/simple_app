@@ -1,0 +1,26 @@
+h1.mt-4 LIST OF POSTS
+ol.breadcrumb.mb-4
+  li.breadcrumb-item = link_to 'Admin Page', admin_path
+  li.breadcrumb-item.active List Of Posts
+.row
+  .col-xl-12
+    .card.mb-4
+      .card-header
+        .float-end
+          = link_to 'New Post', new_post_path, class: 'btn btn-primary'
+      .card-body
+        = pagination @posts, 'bootstrap4'
+        .table-responsive
+          table.table.table-bordered.table-striped.text-nowrap
+            thead
+              tr
+                th Id
+                th User Name
+                th User Email
+                th Title
+                th Description
+                th Published at
+                th Action
+            tbody
+              = render @posts
+        = pagination @posts, 'bootstrap4'

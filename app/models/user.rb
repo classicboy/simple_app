@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :posts
+
   after_create :assign_default_role
 
   scope :id_desc, -> { order id: :desc }
@@ -16,5 +18,9 @@ class User < ApplicationRecord
 
   def admin?
     has_cached_role?(:admin)
+  end
+
+  def regular_user?
+    has_cached_role?(:regular_user)
   end
 end
