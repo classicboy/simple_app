@@ -1,36 +1,21 @@
-body.bg-primary
-  #layoutAuthentication
-    #layoutAuthentication_content
-      main
-        .container
-          .row.justify-content-center
-            .col-lg-5
-              .card.shadow-lg.border-0.rounded-lg.mt-5
-                .card-header
-                  h3.text-center.font-weight-light.my-4 Login
-                .card-body
-                  = form_for(resource, as: resource_name, url: user_session_path) do |f|
-                    .form-floating.mb-3
-                      = f.email_field :email, placeholder: 'name@example.com', class: 'form-control', id: 'inputEmail'
-                      label for='inputEmail' Email address
-                    .form-floating.mb-3
-                      = f.password_field :password, placeholder: 'Password', class: 'form-control', id: 'inputPassword'
-                      label for='inputPassword' Password
-                    .form-check.mb-3
-                      = f.check_box :remember_me, id: 'inputRememberPassword', class: 'form-check-input'
-                      label for='inputRememberPassword' Remember Password
-                    .d-flex.align-items-center.justify-content-between.mt-4.mb-0
-                      = link_to 'Forgot Password?', new_user_password_path, class: 'small'
-                      = f.submit 'Sign in', class: 'btn btn-primary btn-lock'
-                .card-footer.text-center.py-3
-                  .small
-                    = link_to 'Need an account? Sign up!', new_user_registration_path
-    #layoutAuthentication_footer
-      footer.py-4.bg-light.mt-auto
-        .container-fluid.px-4
-          .d-flex.align-items-center.justify-content-between.small
-            .text-muted Copyright © Your Website 2021
-            div
-              a href="#"  Privacy Policy
-              | ·
-              a href="#"  Terms &amp; Conditions
+.col-lg-5
+  .card.shadow-lg.border-0.rounded-lg.mt-5
+    .card-header
+      h3.text-center.font-weight-light.my-4 Login
+    .card-body
+      = form_for(resource, as: resource_name, url: user_session_path) do |f|
+        = render 'shared/flash_messages', resource: resource
+        .form-floating.mb-3
+          = f.email_field :email, placeholder: 'name@example.com', class: 'form-control', id: 'inputEmail'
+          label for='inputEmail' Email address
+        .form-floating.mb-3
+          = f.password_field :password, placeholder: 'Password', class: 'form-control', id: 'inputPassword'
+          label for='inputPassword' Password
+        .form-check.mb-3
+          = f.check_box :remember_me, id: 'inputRememberPassword', class: 'form-check-input'
+          label for='inputRememberPassword' Remember Password
+        .d-flex.align-items-center.justify-content-between.mt-4.mb-0
+          = f.submit 'Sign in', class: 'btn btn-primary btn-lock'
+    .card-footer.text-center.py-3
+      .small
+        = link_to 'Need an account? Sign up!', new_user_registration_path
